@@ -25,7 +25,12 @@
     <title>Weather PWA</title>
     <meta name="codelab" content="your-first-pwa-v3" />
     <link rel="stylesheet" type="text/css" href="/styles/inline.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 
     <!-- CODELAB: Add link rel manifest -->
@@ -55,9 +60,19 @@
     </header>
 
     <main class="main">
-      <div>
-        <input type="text" name="driverSearchField" />
-      </div>
+      <form>
+        <div class="form-group">
+          <label for="driverSearch">Driver</label>
+          <input
+            type="text"
+            class="form-control"
+            id="driverName"
+            aria-describedby="driver"
+            placeholder="Search Drivers"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </main>
 
     <script src="/scripts/luxon-1.11.4.js"></script>
