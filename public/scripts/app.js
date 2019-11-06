@@ -66,11 +66,11 @@ function removeLocation(evt) {
 }
 
 /**
- * Renders the forecast data into the card element.
- *
- * @param {Element} card The card element to update.
- * @param {Object} data Weather forecast data to update the element with.
- */
+//  * Renders the forecast data into the card element.
+//  *
+//  * @param {Element} card The card element to update.
+//  * @param {Object} data Weather forecast data to update the element with.
+//  */
 function renderForecast(card, data) {
   if (!data) {
     // There's no data, skip the update.
@@ -211,8 +211,8 @@ function updateData() {
   Object.keys(weatherApp.selectedLocations).forEach((key) => {
     const location = weatherApp.selectedLocations[key];
     const card = getForecastCard(location);
-    
-    
+
+
     // CODELAB: Add code to call getForecastFromCache
     getForecastFromCache(location.geo)
     .then((forecast) => {
@@ -268,7 +268,7 @@ function init() {
   weatherApp.selectedLocations = loadLocationList();
   updateData();
 
-  // Set up the event handlers for all of the buttons.
+  Set up the event handlers for all of the buttons.
   document.getElementById('butRefresh').addEventListener('click', updateData);
   document.getElementById('butAdd').addEventListener('click', toggleAddDialog);
   document.getElementById('butDialogCancel')
