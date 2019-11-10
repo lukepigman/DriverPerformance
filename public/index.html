@@ -1,4 +1,4 @@
-<!--
+﻿<!--
  Your First PWA Codelab (https://g.co/codelabs/pwa)
 
  Copyright 2019 Google Inc.
@@ -20,26 +20,27 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Driver Performance</title>
-  <meta name="codelab" content="your-first-pwa-v3" />
-  <!-- <link rel="stylesheet" type="MIME" href="/styles/inline.css" /> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Driver Performance</title>
+    <meta name="codelab" content="your-first-pwa-v3" />
+    <!-- <link rel="stylesheet" type="MIME" href="/styles/inline.css" /> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 
-  <!-- CODELAB: Add link rel manifest -->
-  <link rel="manifest" href="/manifest.json" />
-  <!-- CODELAB: Add iOS meta tags and icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-mobile-web-app-title" content="Driver Performance" />
-  <link rel="apple-touch-icon" href="/public/images/icons/icon-152x152.png" />
-  <!-- CODELAB: Add description here -->
-  <meta name="description" content="A Driver Performance app" />
-  <!-- CODELAB: Add meta theme-color -->
-  <meta name="theme-color" content="#2F3BA2" />
+    <!-- CODELAB: Add link rel manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <!-- CODELAB: Add iOS meta tags and icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Driver Performance" />
+    <link rel="apple-touch-icon" href="/public/images/icons/icon-152x152.png" />
+    <!-- CODELAB: Add description here -->
+    <meta name="description" content="A Driver Performance app" />
+    <!-- CODELAB: Add meta theme-color -->
+    <meta name="theme-color" content="#2F3BA2" />
+    <link rel="stylesheet" href="styles/inline.css" type="text/css" />
 </head>
 
 <body>
@@ -56,8 +57,9 @@
   <main class="main">
     <div class="container-fluid">
       <div>
+          <img src="8.png" alt="Stopwatch" />
         <form action="results.html">
-         <input class="form-control" type="text" name="driverName"><br>
+         <input class="form-control" type="text" name="driverName" placeholder="Driver Name"><br>
 
           <button class="btn btn-primary" type="submit">Search</button>
         </form>
@@ -68,6 +70,23 @@
       </div>
     </div>
   </main>
+
+  <!-- Footer -->
+   <footer class="footer">
+      <div id="about">
+          <h2>About Us</h2>
+          <p>We've been providing Timing Systems for forms of<br />racing since 1994 and have since branched out into various<br />niche markets</p>
+      </div>
+      <div id="info">
+          <h2>Information</h2>
+          <ul>
+              <li>News</li>
+              <li>Forum</li>
+              <li>Our Clients</li>
+              <li>Other Links</li>
+          </ul>
+      </div>
+   </footer>
   <!-- <script>
     function searchFunction(input) {
       console.log(driverName)
