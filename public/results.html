@@ -1,47 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather PWA</title>
-    <meta name="codelab" content="your-first-pwa-v3" />
-    <!-- <link rel="stylesheet" type="text/css" href="/styles/inline.css" /> -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <!-- <link rel="icon" href="/images/favicon.ico" type="image/x-icon" /> -->
 
-    <!-- CODELAB: Add link rel manifest -->
-    <link rel="manifest" href="/public/manifest.json" />
-    <!-- CODELAB: Add iOS meta tags and icons -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content="Weather PWA" />
-    <!-- <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png" /> -->
-    <!-- CODELAB: Add description here -->
-    <meta name="description" content="A sample weather app" />
-    <!-- CODELAB: Add meta theme-color -->
-    <meta name="theme-color" content="#2F3BA2" />
-  </head>
-  <body>
-    <header class="header">
-      <h1>
-        Driver Performance
-        <a
-          href="https://www.axwaresystems.com/axorm/calendar_main.php"
-          class="powered-by"
-        >
-          Powered by AXWare Systems
-        </a>
-      </h1>
-      <button id="butInstall" aria-label="Install" hidden></button>
-    </header>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather PWA</title>
+  <meta name="codelab" content="your-first-pwa-v3" />
+  <!-- <link rel="stylesheet" type="text/css" href="/styles/inline.css" /> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <!-- <link rel="icon" href="/images/favicon.ico" type="image/x-icon" /> -->
 
-    <main class="main">
+  <!-- CODELAB: Add link rel manifest -->
+  <link rel="manifest" href="/public/manifest.json" />
+  <!-- CODELAB: Add iOS meta tags and icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Weather PWA" />
+  <!-- <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png" /> -->
+  <!-- CODELAB: Add description here -->
+  <meta name="description" content="A sample weather app" />
+  <!-- CODELAB: Add meta theme-color -->
+  <meta name="theme-color" content="#2F3BA2" />
+</head>
+
+<body>
+  <header class="header">
+    <h1>
+      Driver Performance
+      <a href="https://www.axwaresystems.com/axorm/calendar_main.php" class="powered-by">
+        Powered by AXWare Systems
+      </a>
+    </h1>
+    <button id="butInstall" aria-label="Install" hidden></button>
+  </header>
+  <p>
+    NyG7pQ8GwOsKYAiyIMhAdVxYWKjBj160HTbJ7TdxGBqNfr8JhzKFMDgUMrIMGBOjIkJD2DC
+  </p>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('driverName');
+    console.log(name);
+
+    var docRef = db.collection("cities").doc("SF");
+
+    docRef.get().then(function(doc) {
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }).catch(function(error) {
+      console.log("Error getting document:", error);
+    });
+  </script>
+  <!-- <main class="main">
       <div class="container-fluid">
         <div class="card-deck">
           <div class="card">
@@ -76,6 +90,7 @@
           </div>
         </div>
       </div>
-    </main>
-  </body>
+    </main> -->
+</body>
+
 </html>
