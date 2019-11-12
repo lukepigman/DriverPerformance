@@ -5,21 +5,22 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weather PWA</title>
+  <title>Driver Performance</title>
   <meta name="codelab" content="your-first-pwa-v3" />
   <!-- <link rel="stylesheet" type="text/css" href="/styles/inline.css" /> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <!-- <link rel="icon" href="/images/favicon.ico" type="image/x-icon" /> -->
 
   <!-- CODELAB: Add link rel manifest -->
-  <link rel="manifest" href="/public/manifest.json" />
+  <link rel="manifest" href="/manifest.json" />
   <!-- CODELAB: Add iOS meta tags and icons -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-mobile-web-app-title" content="Weather PWA" />
+  <meta name="apple-mobile-web-app-title" content="Driver Performance" />
   <!-- <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png" /> -->
   <!-- CODELAB: Add description here -->
-  <meta name="description" content="A sample weather app" />
+  <meta name="description" content="Results page of driver search" />
   <!-- CODELAB: Add meta theme-color -->
   <meta name="theme-color" content="#2F3BA2" />
 </head>
@@ -34,26 +35,43 @@
     </h1>
     <button id="butInstall" aria-label="Install" hidden></button>
   </header>
-  <p>
-    NyG7pQ8GwOsKYAiyIMhAdVxYWKjBj160HTbJ7TdxGBqNfr8JhzKFMDgUMrIMGBOjIkJD2DC
-  </p>
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const name = urlParams.get('driverName');
-    console.log(name);
+<div id="test">
 
-    var docRef = db.collection("cities").doc("SF");
 
-    docRef.get().then(function(doc) {
-      if (doc.exists) {
-        console.log("Document data:", doc.data());
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    }).catch(function(error) {
-      console.log("Error getting document:", error);
-    });
+</div>
+   <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase.js"></script>
+<script> 
+
+var firebaseConfig = {
+  apiKey: "AIzaSyCRtbj2d8tRqBJacIEPLNnNAlqXBp3FDUw",
+  authDomain: "driverperformance-e1f0f.firebaseapp.com",
+  databaseURL: "https://driverperformance-e1f0f.firebaseio.com",
+  projectId: "driverperformance-e1f0f",
+  storageBucket: "driverperformance-e1f0f.appspot.com",
+  messagingSenderId: "333675298212",
+  appId: "1:333675298212:web:bda2d2f7dbb4b661ac1531",
+  measurementId: "G-ZJEVRQRGLL"
+};
+
+// Initialize Firebase
+var app = firebase.initializeApp(firebaseConfig);
+
+var db = app.firestore();
+const urlParams = new URLSearchParams(window.location.search);
+const name = urlParams.get('driverName');
+console.log(name);
+
+var docRef = db.collection("3-23").doc("1"); 
+docRef.get().then(function (doc) {
+  if (doc.exists) {
+    console.log("Document data:", doc.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
+}).catch(function (error) {
+  console.log("Error getting document:", error);
+});
   </script>
   <!-- <main class="main">
       <div class="container-fluid">
@@ -87,6 +105,17 @@
         </div>
       </div>
     </main> -->
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+ <!-- <script src="/__/firebase/7.2.2/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries 
+  <script src="/__/firebase/7.2.2/firebase-analytics.js"></script>
+
+  <!-- Initialize Firebase 
+  <script src="/__/firebase/init.js"></script> --
+
 </body>
 
 </html>
