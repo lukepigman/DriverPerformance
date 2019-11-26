@@ -7,6 +7,29 @@
     <title>Driver Performance</title>
 </head>
 <body>
+  <script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const name = urlParams.get('driverName');
+  console.log(name);
+
+  db.collection('Races/3-23/pax').where('Driver', '==', name)
+  .get().then(function(querySnapshot) {
+    if (querySnapshot.size > 0) {
+      // Contents of first document
+      console.log(querySnapshot.docs[0].data());
+      document.getElementById("cardDriver").innerHTML = querySnapshot.docs[0].data().Driver
+      document.getElementById("cardVehicle").innerHTML = "Vehicle: "  + querySnapshot.docs[0].get("Car Model")
+      document.getElementById("cardClass").innerHTML = "Class:" + querySnapshot.docs[0].data().Class
+    } else {
+      console.log("No such document!");
+      document.getElementById("test").innerHTML = "Sorry, " + name + " is not in our database"
+      document.getElementById("cardViewer").innerHTML = ""
+    }
+  })
+  .catch(function(error) {
+    console.log("Error getting document: ", error);
+  });
+    </script>
     <header class="header">
         <h1>
             Driver Performance
@@ -31,7 +54,7 @@
                     <tr>
                         <th>Races</th>
                         <th>Time</th>
-                        <th>Posotion</th>
+                        <th>Position</th>
                     </tr>
                     <tr>
                         <td>Race1</td>

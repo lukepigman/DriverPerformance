@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,8 +9,8 @@
   <title>Driver Performance</title>
   <meta name="codelab" content="your-first-pwa-v3" />
   <!-- <link rel="stylesheet" type="text/css" href="/styles/inline.css" /> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
   <!-- <link rel="icon" href="/images/favicon.ico" type="image/x-icon" /> -->
 
   <!-- CODELAB: Add link rel manifest -->
@@ -25,44 +26,50 @@
   <meta name="theme-color" content="#2F3BA2" />
 
   <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase.js"></script>
-<script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCRtbj2d8tRqBJacIEPLNnNAlqXBp3FDUw",
+      authDomain: "driverperformance-e1f0f.firebaseapp.com",
+      databaseURL: "https://driverperformance-e1f0f.firebaseio.com",
+      projectId: "driverperformance-e1f0f",
+      storageBucket: "driverperformance-e1f0f.appspot.com",
+      messagingSenderId: "333675298212",
+      appId: "1:333675298212:web:bda2d2f7dbb4b661ac1531",
+      measurementId: "G-ZJEVRQRGLL"
+    };
 
-var firebaseConfig = {
-  apiKey: "AIzaSyCRtbj2d8tRqBJacIEPLNnNAlqXBp3FDUw",
-  authDomain: "driverperformance-e1f0f.firebaseapp.com",
-  databaseURL: "https://driverperformance-e1f0f.firebaseio.com",
-  projectId: "driverperformance-e1f0f",
-  storageBucket: "driverperformance-e1f0f.appspot.com",
-  messagingSenderId: "333675298212",
-  appId: "1:333675298212:web:bda2d2f7dbb4b661ac1531",
-  measurementId: "G-ZJEVRQRGLL"
-};
+    // Initialize Firebase
+    var app = firebase.initializeApp(firebaseConfig);
 
-// Initialize Firebase
-var app = firebase.initializeApp(firebaseConfig);
+    var db = app.firestore();
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('driverName');
+    console.log(name);
 
-var db = app.firestore();
-const urlParams = new URLSearchParams(window.location.search);
-const name = urlParams.get('driverName');
-console.log(name);
+    db.collection('Races/3-23/pax').where('Driver', '==', name)
+      .get().then(function(querySnapshot) {
+        if (querySnapshot.size > 0) {
+          // Contents of first document
+          console.log(querySnapshot.docs[0].data());
+          document.getElementById("cardDriver").innerHTML = querySnapshot.docs[0].data().Driver
+          document.getElementById("cardVehicle").innerHTML = "Vehicle: " + querySnapshot.docs[0].get("Car Model")
+          document.getElementById("cardClass").innerHTML = "Class:" + querySnapshot.docs[0].data().Class
+          //document.getElementById("link").innerHTML = ("profile2.html/") +name
+        } else {
+          console.log("No such document!");
+          document.getElementById("test").innerHTML = "Sorry, " + name + " is not in our database"
+          document.getElementById("cardViewer").innerHTML = ""
+        }
+      })
+      .catch(function(error) {
+        console.log("Error getting document: ", error);
+      });
 
-db.collection('3-23').where('Driver', '==', name)
-.get().then(function(querySnapshot) {
-  if (querySnapshot.size > 0) {
-    // Contents of first document
-    console.log(querySnapshot.docs[0].data());
-    document.getElementById("cardDriver").innerHTML = querySnapshot.docs[0].data().Driver
-    document.getElementById("cardVehicle").innerHTML = "Vehicle: "  + querySnapshot.docs[0].get("Car Model")
-    document.getElementById("cardClass").innerHTML = "Class:" + querySnapshot.docs[0].data().Class
-  } else {
-    console.log("No such document!");
-    document.getElementById("test").innerHTML = "Sorry, " + name + " is not in our database"
-    document.getElementById("cardViewer").innerHTML = ""
-  }
-})
-.catch(function(error) {
-  console.log("Error getting document: ", error);
-});
+    function setName() {
+      localStorage.setItem("dName", name);
+      console.log(localStorage.getItem("dName"))
+
+    }
   </script>
 </head>
 
@@ -76,36 +83,41 @@ db.collection('3-23').where('Driver', '==', name)
     </h1>
     <button id="butInstall" aria-label="Install" hidden></button>
   </header>
-<div id="test">
+  <div id="test">
 
 
-</div>
+  </div>
 
-   <main class="main" id="cardViewer">
-      <div class="container-fluid">
-        <div class="card-deck">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title" id="cardDriver"></h4>
-              <p class="card-text">
-                <b><p id=cardVehicle></p>
-                </b><br/>
-                <b><p id=cardClass></p></b>
-              </p>
-              <a href="#!" class="btn btn-primary">View Profile</a>
-            </div>
+  <main class="main" id="cardViewer">
+    <div class="container-fluid">
+      <div class="card-deck">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title" id="cardDriver"></h4>
+            <p class="card-text">
+              <b>
+                <p id=cardVehicle></p>
+              </b><br />
+              <b>
+                <p id=cardClass></p>
+              </b>
+            </p>
+            <form action="profile2.html">
+              <button class="btn btn-primary" onclick="setName()" type="submit">
+                View Profile
+              </button>
+            </form>
           </div>
-      </main>
+  </main>
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
- <!-- <script src="/__/firebase/7.2.2/firebase-app.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries
+   <script src="/__/firebase/7.2.2/firebase-app.js"></script>
+
+     
   <script src="/__/firebase/7.2.2/firebase-analytics.js"></script>
 
-  <!-- Initialize Firebase
-  <script src="/__/firebase/init.js"></script> --
+
+  <script src="/__/firebase/init.js"></script>
 
 </body>
 
