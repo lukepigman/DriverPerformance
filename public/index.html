@@ -1,4 +1,5 @@
-﻿<!--
+﻿
+<!--
  Your First PWA Codelab (https://g.co/codelabs/pwa)
 
  Copyright 2019 Google Inc.
@@ -20,28 +21,31 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Driver Performance</title>
-    <meta name="codelab" content="your-first-pwa-v3" />
-    <!-- <link rel="stylesheet" type="MIME" href="/styles/inline.css" /> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driver Performance</title>
+  <meta name="codelab" content="your-first-pwa-v3" />
+  <!-- <link rel="stylesheet" type="MIME" href="/styles/inline.css" /> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 
-    <!-- CODELAB: Add link rel manifest -->
-    <link rel="manifest" href="/manifest.json" />
-    <!-- CODELAB: Add iOS meta tags and icons -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content="Driver Performance" />
-    <link rel="apple-touch-icon" href="/public/images/icons/icon-152x152.png" />
-    <!-- CODELAB: Add description here -->
-    <meta name="description" content="A Driver Performance app" />
-    <!-- CODELAB: Add meta theme-color -->
-    <meta name="theme-color" content="#2F3BA2" />
-    <link rel="stylesheet" href="styles/inline.css" type="text/css" />
-    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <!-- CODELAB: Add link rel manifest -->
+  <link rel="manifest" href="/manifest.json" />
+  <!-- CODELAB: Add iOS meta tags and icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Driver Performance" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <!-- CODELAB: Add description here -->
+  <meta name="description" content="A Driver Performance app" />
+  <!-- CODELAB: Add meta theme-color -->
+  <meta name="theme-color" content="#2F3BA2" />
+  <link rel="stylesheet" href="styles/inline.css" type="text/css" />
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 </head>
 
 <body>
@@ -58,9 +62,9 @@
   <main class="main">
     <div class="container-fluid">
       <div>
-          <img id="logo" src="8.png" alt="AxWare" />
+        <img id="logo" src="8.png" alt="AxWare" />
         <form action="results.html">
-         <input class="form-control" type="text" name="driverName" placeholder="Driver Name"><br>
+          <input class="form-control" type="text" name="driverName" placeholder="Driver Name"><br>
 
           <button class="btn btn-primary" type="submit">Search</button>
         </form>
@@ -73,12 +77,12 @@
   </main>
 
   <!-- Footer -->
-   <footer class="footer">
-      <div id="about">
-          <h2>About Us</h2>
-          <p>We've been providing Timing Systems for forms of<br />racing since 1994 and have since branched out into various<br />niche markets</p>
-      </div>
-   </footer>
+  <footer class="footer">
+    <div id="about">
+      <h2>About Us</h2>
+      <p>We've been providing Timing Systems for forms of<br />racing since 1994 and have since branched out into various<br />niche markets</p>
+    </div>
+  </footer>
   <!-- <script>
     function searchFunction(input) {
       console.log(driverName)
@@ -88,7 +92,7 @@
 
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
- 
+
 
   <script src="/scripts/luxon-1.11.4.js"></script>
   <script src="/scripts/app.js"></script>
@@ -104,30 +108,29 @@
       });
     }
   </script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
   <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
 
-    <!-- Add the entire Firebase JavaScript SDK -->
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase.js"></script>
-<script> 
+  <!-- Add the entire Firebase JavaScript SDK -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCRtbj2d8tRqBJacIEPLNnNAlqXBp3FDUw",
+      authDomain: "driverperformance-e1f0f.firebaseapp.com",
+      databaseURL: "https://driverperformance-e1f0f.firebaseio.com",
+      projectId: "driverperformance-e1f0f",
+      storageBucket: "driverperformance-e1f0f.appspot.com",
+      messagingSenderId: "333675298212",
+      appId: "1:333675298212:web:bda2d2f7dbb4b661ac1531",
+      measurementId: "G-ZJEVRQRGLL"
+    };
 
-var firebaseConfig = {
-  apiKey: "AIzaSyCRtbj2d8tRqBJacIEPLNnNAlqXBp3FDUw",
-  authDomain: "driverperformance-e1f0f.firebaseapp.com",
-  databaseURL: "https://driverperformance-e1f0f.firebaseio.com",
-  projectId: "driverperformance-e1f0f",
-  storageBucket: "driverperformance-e1f0f.appspot.com",
-  messagingSenderId: "333675298212",
-  appId: "1:333675298212:web:bda2d2f7dbb4b661ac1531",
-  measurementId: "G-ZJEVRQRGLL"
-};
-
-// Initialize Firebase
-var app = firebase.initializeApp(firebaseConfig);
-    </script>
+    // Initialize Firebase
+    var app = firebase.initializeApp(firebaseConfig);
+  </script>
 
 </body>
 
