@@ -16,11 +16,11 @@
  * limitations under the License
  */
 
-* {
+ * {
   box-sizing: border-box;
 }
 
-html,
+
 body {
   color: #444;
   font-family: 'Helvetica', 'Verdana', sans-serif;
@@ -32,12 +32,16 @@ body {
   width: 100%;
 }
 
-html {
-  overflow: hidden;
+ html {
+  height: auto;
+  margin: auto;
+  width: auto;
+  overflow: scroll;
+
 }
 
-body {
-    align-content: stretch;
+ body {
+     align-content: stretch;
     align-items: stretch;
     background: #ececec;
     display: flex;
@@ -50,7 +54,7 @@ body {
  * Header
  */
 
-.header {
+ .header {
   text-align: center;
   align-items: stretch;
   background: #222222;
@@ -73,20 +77,20 @@ body {
   z-index: 1000;
 }
 
-.header h1 {
+ .header h1 {
   flex: 1;
   font-size: 20px;
   font-weight: 400;
   margin: 0;
 }
 
-.header button {
+ .header button {
   border: none;
   cursor: pointer;
   height: 24px;
   opacity: 0.54;
   outline: none;
-  overflow: hidden;
+
   text-indent: -30000px;
   transition: opacity 0.333s cubic-bezier(0, 0, 0.21, 1);
   width: 24px;
@@ -112,9 +116,9 @@ body {
  * Main body
  */
 
-.main {
+ .main {
   flex: 1;
-  overflow-x: hidden;
+
   overflow-y: auto;
   padding-top: 60px;
 }
@@ -159,14 +163,14 @@ body {
 * Footer
 */
 
-footer {
+ footer {
     width: 100%;
     background-color: black;
     color: white;
     max-height:8.5em;
     left: 0;
     bottom: 0;
- 
+
 }
 footer h2{
     font-weight:bold;
@@ -184,7 +188,7 @@ footer h2{
  * Add dialog
  */
 
-#addDialogContainer {
+ #addDialogContainer {
   background: rgba(0, 0, 0, 0.57);
   height: 100%;
   left: 0;
@@ -197,7 +201,7 @@ footer h2{
   will-change: opacity;
 }
 
-#addDialogContainer.visible {
+ #addDialogContainer.visible {
   opacity: 1;
   pointer-events: auto;
 }
@@ -265,7 +269,7 @@ footer h2{
   height: 100%;
   position: fixed;
   background-color: #222222;
-  overflow-x: hidden;
+
   z-index: 1;
 }
 .profile-details h1{
@@ -284,4 +288,3 @@ table.race-info{
   border: 1px solid black;
   width: 50%;
 }
-

@@ -8,10 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Driver Performance</title>
   <meta name="codelab" content="your-first-pwa-v3" />
-  <!-- <link rel="stylesheet" type="text/css" href="/styles/inline.css" /> -->
+  <!-- <link rel="stylesheet" type="MIME" href="/styles/inline.css" /> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-
-  <!-- <link rel="icon" href="/images/favicon.ico" type="image/x-icon" /> -->
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 
   <!-- CODELAB: Add link rel manifest -->
   <link rel="manifest" href="/manifest.json" />
@@ -19,12 +18,13 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="apple-mobile-web-app-title" content="Driver Performance" />
-  <!-- <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png" /> -->
+  <link rel="apple-touch-icon" href="/public/images/icons/icon-152x152.png" />
   <!-- CODELAB: Add description here -->
-  <meta name="description" content="Results page of driver search" />
+  <meta name="description" content="A Driver Performance app" />
   <!-- CODELAB: Add meta theme-color -->
   <meta name="theme-color" content="#2F3BA2" />
-
+  <link rel="stylesheet" href="styles/inline.css" type="text/css" />
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
   <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase.js"></script>
   <script>
     var firebaseConfig = {
@@ -74,19 +74,22 @@
 </head>
 
 <body>
-  <header class="header">
-    <h1>
-      Driver Performance
-      <a href="https://www.axwaresystems.com/axorm/calendar_main.php" class="powered-by">
-        Powered by AXWare Systems
-      </a>
-    </h1>
-    <button id="butInstall" aria-label="Install" hidden></button>
-  </header>
-  <div id="test">
-
-
+  <div class="row pb-5">
+    <div class="col md-12">
+      <div class="header">
+        <h1>
+          Driver Performance
+          <a href="https://www.axwaresystems.com/axorm/calendar_main.php" class="powered-by">
+            Powered by AXWare Systems
+          </a>
+        </h1>
+        <button id="butInstall" aria-label="Install" hidden></button>
+      </div>
+    </div>
   </div>
+
+
+
 
   <main class="main" id="cardViewer">
     <div class="container-fluid">
@@ -103,8 +106,8 @@
               </b>
             </p>
             <form action="profile2.html">
-              <button class="btn btn-primary" onclick="setName()" type="submit">
-                View Profile
+              <button class="btn btn-primary btn-work" onclick="setName()" type="submit">
+                View Driver
               </button>
             </form>
           </div>

@@ -23,6 +23,64 @@
    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 
    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase.js"></script>
+ </head>
+
+
+
+ <body>
+
+   <div class="row pb-5">
+     <div class="col md-12">
+       <div class="header">
+         <h1>
+           Driver Performance
+           <a href="https://www.axwaresystems.com/axorm/calendar_main.php" class="powered-by">
+             Powered by AXWare Systems
+           </a>
+         </h1>
+         <button id="butInstall" aria-label="Install" hidden></button>
+       </div>
+     </div>
+   </div>
+   <div class="pt-5">
+     <div class="row border-bottom">
+       <div class="col-md-6 pr-2 ">
+         <h3 id="driverName">
+           Driver Name
+         </h3>
+       </div>
+       <div class="col-md-6 pr-2">
+         <h4 id="vehicleName">
+           Vehicle name
+         </h4>
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-md-12 border-bottom pl-2">
+         <h3 class="text-right">
+           Recent Races
+         </h3>
+       </div>
+     </div>
+     <div class="row">
+
+       <div class="col-sm" id="quickCard0">
+       </div>
+       <div class="col-sm" id="quickCard1">
+       </div>
+
+       <div class="col-sm" id="quickCard2">
+       </div>
+       <div class="col-sm" id="quickCard3">
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-sm-12 pt-3 border-bottom">
+         <a href="list.html">View All</a>
+       </div>
+     </div>
+   </div>
+
    <script>
      var newName = localStorage.getItem("dName");
      console.log(newName);
@@ -55,7 +113,7 @@
        .catch(function(error) {
          console.log("Error getting document: ", error);
        });
-     var dateArray = ['3-23', '3-24', '4-13', '5-04','5-05', '6-08','6-09'];
+     var dateArray = ['3-23', '3-24', '4-13', '5-04', '5-05', '6-08', '6-09', '6-15', '6-16', '7-13', '7-14', '8-10', '8-11', '9-01', '9-02'];
 
      for (i = 0; i < dateArray.length; i++) {
        console.log(dateArray[i]);
@@ -72,7 +130,7 @@
            if (querySnapshot.size > 0) {
              // Contents of first document
              console.log(querySnapshot.docs[0].data());
-             
+
              var myCode = `<div class="card">
           <h5 class="card-header">
             ` + date + `-2019
@@ -106,64 +164,6 @@
 
      }
    </script>
-
-
- </head>
-
-
-
- <body>
-   <div class="row pb-5">
-     <div class="col md-12">
-       <div class="header">
-         <h1>
-           Driver Performance
-           <a href="https://www.axwaresystems.com/axorm/calendar_main.php" class="powered-by">
-             Powered by AXWare Systems
-           </a>
-         </h1>
-         <button id="butInstall" aria-label="Install" hidden></button>
-       </div>
-     </div>
-   </div>
-   <div class="container-fluid pt-5">
-     <div class="row border-bottom">
-       <div class="col-md-6 ">
-         <h3 id="driverName">
-           Driver Name
-         </h3>
-       </div>
-       <div class="col-md-6">
-         <h4 id="vehicleName">
-           Vehicle name
-         </h4>
-       </div>
-     </div>
-     <div class="row">
-       <div class="col-md-12 border-bottom">
-         <h3 class="text-right">
-           Recent Races
-         </h3>
-       </div>
-     </div>
-     <div class="row">
-       <div id="quickCard0">
-       </div>
-       <div id="quickCard1">
-       </div>
-
-       <div id="quickCard2">
-       </div>
-       <div id="quickCard3">
-       </div>
-     </div>
-     <div class="row">
-       <div class="col-md-12 pt-3 border-bottom">
-         <a href="list.html">View All</a>
-       </div>
-     </div>
-   </div>
-
 
    <script src="/__/firebase/7.2.2/firebase-app.js"></script>
    <script src="/__/firebase/7.2.2/firebase-analytics.js"></script>
