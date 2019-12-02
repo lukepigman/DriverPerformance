@@ -26,7 +26,7 @@ const FILES_TO_CACHE = [
     '/',
     '/index.html',
     '/results.html',
-    '/profile2.html',
+    '/profile.html',
     '/manifest.json',
     '/scripts/app.js',
     '/scripts/install.js',
