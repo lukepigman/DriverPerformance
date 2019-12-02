@@ -313,3 +313,7 @@ table.race-info{
 .card-body {
   color: white;
 }
+
+tr:hover {
+  background-color: lightgrey;
+}
