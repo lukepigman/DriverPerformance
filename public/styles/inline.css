@@ -315,5 +315,13 @@ table.race-info{
 }
 
 tr:hover {
-  background-color: lightgrey;
+  background-color: gray;
+}
+
+th {
+  background-color: black;
+  color: white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 2.95em;
 }
