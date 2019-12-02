@@ -288,3 +288,28 @@ table.race-info{
   border: 1px solid black;
   width: 50%;
 }
+
+/** results styling
+**/
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  text-align: center;
+  background-color: black;
+}
+
+.card-body button{
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: black;
+  background-color: white;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.card-body {
+  color: white;
+}
