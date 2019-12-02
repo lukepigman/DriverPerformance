@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driver Performance</title>
+  <meta name="DriverPerformance" content="The Driver performance App" />
+  <!-- <link rel="stylesheet" type="MIME" href="/styles/inline.css" /> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+
+  <!-- CODELAB: Add link rel manifest -->
+  <link rel="manifest" href="/manifest.json" />
+  <!-- CODELAB: Add iOS meta tags and icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Driver Performance" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <!-- CODELAB: Add description here -->
+  <meta name="description" content="A Driver Performance app" />
+  <!-- CODELAB: Add meta theme-color -->
+  <meta name="theme-color" content="#2F3BA2" />
+  <link rel="stylesheet" href="styles/inline.css" type="text/css" />
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+
+</head>
+
+<body>
+  <header class="header mb-5">
+    <h1>
+      Driver Performance
+      <a href="https://www.axwaresystems.com/axorm/calendar_main.php" class="powered-by">
+        Powered by AXWare Systems
+      </a>
+    </h1>
+    <button id="butInstall" aria-label="Install" hidden></button>
+  </header>
+  <div class="container-fluid pt-5">
+    <div class="row">
+      <div class="col-md-12 pt-3">
+        <h3 id="driverName" class="text-center">
+          Name
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-sm table-striped">
+          <thead>
+            <tr>
+              <th>
+                Date
+              </th>
+              <th>
+                Pax Time
+              </th>
+              <th>
+                Position in Class
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                date
+              </td>
+              <td>
+                pax time
+              </td>
+              <td>
+                position
+              </td>
+            </tr>
+            <div id="r0"></div>
+            <div id="r1"></div>
+            <div id="r2"></div>
+            <div id="r3"></div>
+            <div id="r4"></div>
+            <div id="r5"></div>
+            <div id="r6"></div>
+            <div id="r7"></div>
+            <div id="r9"></div>
+            <div id="r10"></div>
+            <div id="r11"></div>
+            <div id="r12"></div>
+            <div id="r13"></div>
+            <div id="r14"></div>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCRtbj2d8tRqBJacIEPLNnNAlqXBp3FDUw",
+      authDomain: "driverperformance-e1f0f.firebaseapp.com",
+      databaseURL: "https://driverperformance-e1f0f.firebaseio.com",
+      projectId: "driverperformance-e1f0f",
+      storageBucket: "driverperformance-e1f0f.appspot.com",
+      messagingSenderId: "333675298212",
+      appId: "1:333675298212:web:bda2d2f7dbb4b661ac1531",
+      measurementId: "G-ZJEVRQRGLL"
+    };
+
+    // Initialize Firebase
+    var app = firebase.initializeApp(firebaseConfig);
+
+    var db = app.firestore();
+    var name = localStorage.getItem("dName");
+    console.log(name);
+    document.getElementById("driverName").innerHTML = name;
+
+    var dateArray = ['3-23', '3-24', '4-13', '5-04', '5-05', '6-08', '6-09', '6-15', '6-16', '7-13', '7-14', '8-10', '8-11', '9-01', '9-02'];
+
+    for (i = 0; i < dateArray.length; i++) {
+      console.log(dateArray[i]);
+
+      getRace(dateArray[i], i);
+    }
+
+
+
+    function getRace(date, index) {
+      console.log("getRace triggered for: " + date);
+      db.collection('Races/' + date + "/pax").where('Driver', '==', name)
+        .get().then(function(querySnapshot) {
+          if (querySnapshot.size > 0) {
+            // Contents of first document
+            console.log(querySnapshot.docs[0].data());
+
+            var myCode = `	<tr>
+  						<td>
+  							` + date + `-2019
+  						</td>
+  						<td>
+  							` + querySnapshot.docs[0].get('Pax Time') + `
+  						</td>
+  						<td>
+  							` + querySnapshot.docs[0].get('Pos.') + `
+  						</td>
+  					</tr>`
+
+            document.getElementById("r" + i).innerHTML = myCode;
+            console.log("docoument written for: " + date)
+            // querySnapshot.docs[0].data().Driver
+
+          } else {
+            console.log("No such document!");
+            document.getElementById("test").innerHTML = "Sorry, " + name + " is not in our database"
+            document.getElementById("cardViewer").innerHTML = ""
+          }
+        })
+
+        .catch(function(error) {
+          console.log("Error getting document: ", error);
+        });
+
+
+    }
+  </script>
+  <script src="/__/firebase/7.2.2/firebase-app.js"></script>
+  <script src="/__/firebase/7.2.2/firebase-analytics.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script>
+    // CODELAB: Register service worker.
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/service-worker.js").then(reg => {
+          console.log("Service worker registered.", reg);
+        });
+      });
+    }
+  </script>
+</body>

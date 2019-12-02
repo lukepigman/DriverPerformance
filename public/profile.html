@@ -1,70 +1,186 @@
-﻿<!DOCTYPE html>
+ <!DOCTYPE html>
+ <html lang="en">
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="styles/inline.css" type="text/css" />
-    <title>Driver Performance</title>
-</head>
-<body>
-  <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const name = urlParams.get('driverName');
-  console.log(name);
+ <head>
 
-  db.collection('Races/3-23/pax').where('Driver', '==', name)
-  .get().then(function(querySnapshot) {
-    if (querySnapshot.size > 0) {
-      // Contents of first document
-      console.log(querySnapshot.docs[0].data());
-      document.getElementById("cardDriver").innerHTML = querySnapshot.docs[0].data().Driver
-      document.getElementById("cardVehicle").innerHTML = "Vehicle: "  + querySnapshot.docs[0].get("Car Model")
-      document.getElementById("cardClass").innerHTML = "Class:" + querySnapshot.docs[0].data().Class
-    } else {
-      console.log("No such document!");
-      document.getElementById("test").innerHTML = "Sorry, " + name + " is not in our database"
-      document.getElementById("cardViewer").innerHTML = ""
-    }
-  })
-  .catch(function(error) {
-    console.log("Error getting document: ", error);
-  });
-    </script>
-    <header class="header">
-        <h1>
-            Driver Performance
-            <a href="https://www.axwaresystems.com/axorm/calendar_main.php"
-               class="powered-by">
-                Powered by AXWare Systems
-            </a>
-        </h1>
-        <button id="butInstall" aria-label="Install" hidden></button>
-    </header>
-    <main class="main">
-        <div class="container-fluid">
-            <div class="column profile-details">
-                <h1>Name</h1>
-                <h2>vehicle</h2>
-                <h3>Avg. Position</h3>
-                <h3><a href="#">graphical results</a></h3>
-            </div>
-            <div class="column races">
-                <h1>RACES</h1>
-                <table class="race-info">
-                    <tr>
-                        <th>Races</th>
-                        <th>Time</th>
-                        <th>Position</th>
-                    </tr>
-                    <tr>
-                        <td>Race1</td>
-                        <td>5:54.345</td>
-                        <td>3</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </main>
-    </table>
-</body>
-</html>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Driver Performance</title>
+   <meta name="DriverPerformance" content="The Driver performance App" />
+   <!-- <link rel="stylesheet" type="MIME" href="/styles/inline.css" /> -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+   <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+
+   <!-- CODELAB: Add link rel manifest -->
+   <link rel="manifest" href="/manifest.json" />
+   <!-- CODELAB: Add iOS meta tags and icons -->
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+   <meta name="apple-mobile-web-app-title" content="Driver Performance" />
+   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+   <!-- CODELAB: Add description here -->
+   <meta name="description" content="A Driver Performance app" />
+   <!-- CODELAB: Add meta theme-color -->
+   <meta name="theme-color" content="#2F3BA2" />
+   <link rel="stylesheet" href="styles/inline.css" type="text/css" />
+   <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+
+   <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase.js"></script>
+ </head>
+
+
+
+ <body>
+
+   <div class="row pb-5">
+     <div class="col md-12">
+       <div class="header">
+         <h1>
+           Driver Performance
+           <a href="https://www.axwaresystems.com/axorm/calendar_main.php" class="powered-by">
+             Powered by AXWare Systems
+           </a>
+         </h1>
+         <button id="butInstall" aria-label="Install" hidden></button>
+       </div>
+     </div>
+   </div>
+   <div class="pt-5">
+     <div class="row mx-auto border-bottom">
+       <div class="col-md-6 pr-2 ">
+         <h3 class="ml-1" id="driverName">
+           Driver Name
+         </h3>
+       </div>
+       <div class="col-md-6 pr-2">
+         <h4 class="ml-1" id="vehicleName">
+           Vehicle name
+         </h4>
+       </div>
+     </div>
+     <div class="row mx-auto">
+       <div class="col-md-12 border-bottom mr-2">
+         <h3 class="text-right">
+           Recent Races
+         </h3>
+       </div>
+     </div>
+     <div class="row mx-auto">
+
+       <div class="col-sm" id="quickCard0">
+       </div>
+       <div class="col-sm" id="quickCard1">
+       </div>
+
+       <div class="col-sm" id="quickCard2">
+       </div>
+       <div class="col-sm" id="quickCard3">
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-sm-12 pt-3 border-bottom">
+         <a href="all.html">View All</a>
+       </div>
+     </div>
+   </div>
+
+   <script>
+     var newName = localStorage.getItem("dName");
+     console.log(newName);
+     var firebaseConfig = {
+       apiKey: "AIzaSyCRtbj2d8tRqBJacIEPLNnNAlqXBp3FDUw",
+       authDomain: "driverperformance-e1f0f.firebaseapp.com",
+       databaseURL: "https://driverperformance-e1f0f.firebaseio.com",
+       projectId: "driverperformance-e1f0f",
+       storageBucket: "driverperformance-e1f0f.appspot.com",
+       messagingSenderId: "333675298212",
+       appId: "1:333675298212:web:bda2d2f7dbb4b661ac1531",
+       measurementId: "G-ZJEVRQRGLL"
+     };
+
+     var app = firebase.initializeApp(firebaseConfig);
+     var db = app.firestore();
+     db.collection('Races/3-23/pax').where('Driver', '==', newName)
+       .get().then(function(querySnapshot) {
+         if (querySnapshot.size > 0) {
+           // Contents of first document
+           document.getElementById("driverName").innerHTML = querySnapshot.docs[0].data().Driver
+           document.getElementById("vehicleName").innerHTML = "Vehicle: " + querySnapshot.docs[0].get("Car Model")
+
+         } else {
+           console.log("No such document!");
+           document.getElementById("test").innerHTML = "Sorry, " + name + " is not in our database"
+           document.getElementById("cardViewer").innerHTML = ""
+         }
+       })
+       .catch(function(error) {
+         console.log("Error getting document: ", error);
+       });
+     var dateArray = ['3-23', '3-24', '4-13', '5-04', '5-05', '6-08']
+     for (i = 0; i < dateArray.length; i++) {
+       console.log(dateArray[i]);
+
+       getRace(dateArray[i], i);
+     }
+
+
+
+     function getRace(date, index) {
+       console.log("getRace triggered for: " + date);
+       db.collection('Races/' + date + "/pax").where('Driver', '==', newName)
+         .get().then(function(querySnapshot) {
+           if (querySnapshot.size > 0) {
+             // Contents of first document
+             console.log(querySnapshot.docs[0].data());
+
+             var myCode = `<div class="card">
+          <h5 class="card-header">
+            ` + date + `-2019
+          </h5>
+          <div class="card-body">
+            <p class="card-text">
+               Raw time: ` + querySnapshot.docs[0].get('Total') + `<br>
+               Pax time: ` + querySnapshot.docs[0].get('Pax Time') + `
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="#">Details > </a>
+          </div>
+        </div>`
+
+             document.getElementById("quickCard" + index).innerHTML = myCode;
+             console.log("docoument written for: " + date)
+             // querySnapshot.docs[0].data().Driver
+
+           } else {
+             console.log("No such document!");
+             document.getElementById("test").innerHTML = "Sorry, " + name + " is not in our database"
+             document.getElementById("cardViewer").innerHTML = ""
+           }
+         })
+
+         .catch(function(error) {
+           console.log("Error getting document: ", error);
+         });
+
+
+     }
+   </script>
+   <script>
+     // CODELAB: Register service worker.
+     if ("serviceWorker" in navigator) {
+       window.addEventListener("load", () => {
+         navigator.serviceWorker.register("/service-worker.js").then(reg => {
+           console.log("Service worker registered.", reg);
+         });
+       });
+     }
+   </script>
+
+   <script src="/__/firebase/7.2.2/firebase-app.js"></script>
+   <script src="/__/firebase/7.2.2/firebase-analytics.js"></script>
+   <script src="/__/firebase/init.js"></script>
+ </body>
