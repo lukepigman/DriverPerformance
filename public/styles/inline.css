@@ -296,18 +296,17 @@ table.race-info{
   margin: auto;
   text-align: center;
   background-color: black;
+  margin-bottom: 1em;
 }
 
 .card-body button{
   border: none;
   outline: 0;
   display: inline-block;
-  padding: 8px;
   color: black;
   background-color: white;
   text-align: center;
   cursor: pointer;
-  font-size: 18px;
 }
 
 .card-body {
@@ -315,7 +314,7 @@ table.race-info{
 }
 
 tr:hover {
-  background-color: gray;
+  background-color: lightgray;
 }
 
 th {
@@ -324,4 +323,9 @@ th {
   position: -webkit-sticky;
   position: sticky;
   top: 2.95em;
+}
+
+#vehicleName, #driverName {
+  font-weight: bold;
+  
 }
