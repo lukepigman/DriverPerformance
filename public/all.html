@@ -147,7 +147,7 @@
             console.log(querySnapshot.docs[0].data());
 
             var myCode = `<td>
-            <a href=/details.html>` + date + `-2019</a>
+            <a href=/details.html?id=`+ date +`>` + date + `-2019</a>
 
             </td>
   						<td>` + querySnapshot.docs[0].get('Pax Time') + `</td>
@@ -172,6 +172,7 @@
 
     }
   </script>
+  <script src="/scripts/install.js"></script>
   <script src="/__/firebase/7.2.2/firebase-app.js"></script>
   <script src="/__/firebase/7.2.2/firebase-analytics.js"></script>
   <script src="/__/firebase/init.js"></script>

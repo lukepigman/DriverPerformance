@@ -19,6 +19,13 @@
  * {
   box-sizing: border-box;
 }
+html,body
+{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
 
 
 body {
@@ -83,6 +90,7 @@ body {
   font-weight: 400;
   margin: 0;
 }
+
 
  .header button {
   border: none;
@@ -327,5 +335,5 @@ th {
 
 #vehicleName, #driverName {
   font-weight: bold;
-  
+
 }
