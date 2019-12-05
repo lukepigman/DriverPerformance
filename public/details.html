@@ -63,37 +63,37 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-3">
-        <h3 id="carModel">
+      <div class="col-sm-6">
+        <h5 id="carModel">
 
-        </h3>
+        </h5>
       </div>
-      <div class="col-xs-3">
-        <h3 id="carClass">
+      <div class="col-sm-6">
+        <h5 id="carClass">
 
-        </h3>
+        </h5>
       </div>
-      <div class="col-xs-3">
-        <h3 id="factor">
-          h3. Lorem ipsum dolor sit amet.
-        </h3>
+      <div class="col-sm-6">
+        <h5 id="factor">
+          h5. Lorem ipsum dolor sit amet.
+        </h5>
       </div>
-      <div class="col-xs-3">
-        <h3 id="fromFirst">
-          h3. Lorem ipsum dolor sit amet.
-        </h3>
+      <div class="col-sm-6">
+        <h5 id="fromFirst">
+          h5. Lorem ipsum dolor sit amet.
+        </h5>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4">
-        <h3 id="paxTime">
-          h3. Lorem ipsum dolor sit amet.
-        </h3>
+      <div class="col-md-6">
+        <h5 id="paxTime">
+          h5. Lorem ipsum dolor sit amet.
+        </h5>
       </div>
-      <div class="col-md-4">
-        <h3 id="total">
-          h3. Lorem ipsum dolor sit amet.
-        </h3>
+      <div class="col-md-6">
+        <h5 id="total">
+          h5. Lorem ipsum dolor sit amet.
+        </h5>
       </div>
 
     </div>
@@ -112,7 +112,7 @@
     var newName = localStorage.getItem("dName");
     console.log(newName);
     document.getElementById('name').innerHTML = newName;
-    document.getElementById('date').innerHTML = id;
+    document.getElementById('date').innerHTML = "Race Date: " + id;
     var firebaseConfig = {
       apiKey: "AIzaSyCRtbj2d8tRqBJacIEPLNnNAlqXBp3FDUw",
       authDomain: "driverperformance-e1f0f.firebaseapp.com",
@@ -131,12 +131,12 @@
       .get().then(function(querySnapshot) {
         if (querySnapshot.size > 0) {
 
-          document.getElementById("carModel").innerHTML = querySnapshot.docs[0].get("Car Model");
-          document.getElementById("carClass").innerHTML = querySnapshot.docs[0].data().Class;
-          document.getElementById("factor").innerHTML = querySnapshot.docs[0].data().Factor;
-          document.getElementById("fromFirst").innerHTML = querySnapshot.docs[0].get("From 1st");
-          document.getElementById("paxTime").innerHTML = querySnapshot.docs[0].get("Pax Time");
-          document.getElementById("total").innerHTML = querySnapshot.docs[0].data().Total;
+          document.getElementById("carModel").innerHTML = "Vehicle: "+ querySnapshot.docs[0].get("Car Model");
+          document.getElementById("carClass").innerHTML = "Class: "+ querySnapshot.docs[0].data().Class;
+          document.getElementById("factor").innerHTML = "Factor: "+ querySnapshot.docs[0].data().Factor;
+          document.getElementById("fromFirst").innerHTML = "From 1st: "+ querySnapshot.docs[0].get("From 1st");
+          document.getElementById("paxTime").innerHTML = "Pax Time: "+ querySnapshot.docs[0].get("Pax Time");
+          document.getElementById("total").innerHTML = "Total Time: "+ querySnapshot.docs[0].data().Total;
         }
       })
       .catch(function(error) {
