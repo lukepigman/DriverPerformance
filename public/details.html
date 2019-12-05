@@ -48,44 +48,62 @@
       </div>
     </div>
   </div>
+
+
+
   <div class="container-fluid">
-    <div class="row pt-5">
-      <div class="col-md-12">
-        <h3 id="name">
+    <div class="row pt-3 border-bottom">
+      <div class="col-sm-6">
+        <h2 id="name">
           name
+        </h2>
+      </div>
+      <div class="col-sm-6">
+        <h3 id="date"></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">
+        <h3 id="carModel">
+
         </h3>
-        <h3 id="date">
-          date
+      </div>
+      <div class="col-xs-3">
+        <h3 id="carClass">
+
+        </h3>
+      </div>
+      <div class="col-xs-3">
+        <h3 id="factor">
+          h3. Lorem ipsum dolor sit amet.
+        </h3>
+      </div>
+      <div class="col-xs-3">
+        <h3 id="fromFirst">
+          h3. Lorem ipsum dolor sit amet.
         </h3>
       </div>
     </div>
     <div class="row">
-      <div class="card w-80">
-        <h4 class="card-title" id="cardDriver"></h4>
-        <div class="card-body w-100">
-
-          <div class="card-text">
-            <p id="cardVehicle"></p>
-            <br>
-            <p id="cardClass"></p>
-          </div>
-        </div>
-        <form action="profile.html">
-          <button class="btn btn-primary w-50 mx-auto" onclick="setName()" type="submit">
-            View
-          </button>
-        </form>
+      <div class="col-md-4">
+        <h3 id="paxTime">
+          h3. Lorem ipsum dolor sit amet.
+        </h3>
       </div>
-    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <h3 id="total">
+          h3. Lorem ipsum dolor sit amet.
+        </h3>
+      </div>
+
+    </div>
+    <div class="row">
       <div class="col-md-12">
         <table class="table">
         </table>
       </div>
     </div>
   </div>
-
-
-
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
@@ -105,10 +123,27 @@
       appId: "1:333675298212:web:bda2d2f7dbb4b661ac1531",
       measurementId: "G-ZJEVRQRGLL"
     };
-
     var app = firebase.initializeApp(firebaseConfig);
     var db = app.firestore();
     var racers = [];
+
+    db.collection('Races/' + id + '/pax').where('Driver', '==', newName)
+      .get().then(function(querySnapshot) {
+        if (querySnapshot.size > 0) {
+
+          document.getElementById("carModel").innerHTML = querySnapshot.docs[0].get("Car Model");
+          document.getElementById("carClass").innerHTML = querySnapshot.docs[0].data().Class;
+          document.getElementById("factor").innerHTML = querySnapshot.docs[0].data().Factor;
+          document.getElementById("fromFirst").innerHTML = querySnapshot.docs[0].get("From 1st");
+          document.getElementById("paxTime").innerHTML = querySnapshot.docs[0].get("Pax Time");
+          document.getElementById("total").innerHTML = querySnapshot.docs[0].data().Total;
+        }
+      })
+      .catch(function(error) {
+        console.log("Error getting document: ", error);
+      });
+
+
     getRace(id);
 
 
@@ -134,7 +169,7 @@
               };
 
               racers.push(racer);
-              console.log("Racer = "+racers[i].Driver);
+              console.log("Racer = " + racers[i].Driver);
             }
 
 
@@ -150,7 +185,7 @@
 
     }
 
-    function run(racers){
+    function run(racers) {
 
       let table = document.querySelector("table");
       let data = Object.keys(racers[0]);
