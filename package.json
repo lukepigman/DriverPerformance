@@ -1,7 +1,7 @@
 {
   "name": "your-first-pwapp",
   "version": "2.0.0",
-  "description": "Codelab for Your First PWAPP",
+  "description": "Driver Performance App",
   "homepage": "https://codelabs.developers.google.com/codelabs/your-first-pwapp/",
   "main": "server.js",
   "scripts": {
